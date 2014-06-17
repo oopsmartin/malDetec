@@ -1,0 +1,6 @@
+object_operationMap
+	ÏÈ²éinstructionÓòÖÐµÄÄÚÈÝ£¬Èô²»ÔÚÕâÀï£¬ÔÙÔÚobjectºÍoperationÖÐ²éÑ¯£¬
+	Èç¹ûÔÚobject»òoperationµÄÈÎÒâÒ»¸öÖÐ³öÏÖ£¬ÄÇÃ´ÐèÒªÔÚÁíÒ»¸öÖÐ³öÏÖ£¬ÀýÈç_setenvÖÐÓÐset£¬ÐèÒªÔÚ
+	objectÖÐ²éÑ¯env£¬ÈôÃ»ÓÐ
+	
+	next is to add data in fc tables which is the key element in generating extract path

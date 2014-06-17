@@ -1,0 +1,199 @@
+graph: {
+title: "Graph of _WinMain@16"
+manhattan_edges: yes
+layoutalgorithm: mindepth
+finetuning: no
+layout_downfactor: 100
+layout_upfactor: 0
+layout_nearfactor: 0
+xlspace: 12
+yspace: 30
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 192 192
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 0 0
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+node: { title: "0" label: "69_WinMain@1631:
+push    ebp
+mov     ebp, esp
+sub     esp, 198h
+push    ebx
+push    esi
+push    edi
+call    GetTickCount
+push    eax             ; lpName
+call    sub_401CD5
+xor     esi, esi
+mov     [esp+1A8h+var_1A8], offset aAdmmoodownjkls; \"AdmMoodownJklS003\"
+push    esi             ; bInitialOwner
+push    esi             ; lpMutexAttributes
+call    CreateMutexA
+mov     dword_414B64, eax
+call    GetLastError
+cmp     eax, 0B7h
+jnz     short loc_40316B" vertical_order: 0 }
+node: { title: "1" label: "760040316231:
+pop     edi
+pop     esi
+xor     eax, eax
+pop     ebx
+leave
+retn    10h" vertical_order: 14 }
+node: { title: "2" label: "58loc_40316B31:
+lea     eax, [ebp+WSAData]
+push    eax             ; lpWSAData
+push    101h            ; wVersionRequested
+call    WSAStartup
+mov     ecx, 9FFh
+xor     eax, eax
+mov     edi, offset byte_408260
+push    [ebp+Str]       ; Str
+rep stosd
+stosw
+stosb
+mov     dword_414B68, esi
+call    _strlen
+test    eax, eax
+pop     ecx
+ja      short loc_4031B4" }
+node: { title: "3" label: "76004031A131:
+push    10h             ; uType
+push    offset Caption  ; \"Error\"
+push    offset Text     ; \"The file could not be opened!\"
+push    esi             ; hWnd
+call    MessageBoxA" }
+node: { title: "4" label: "58loc_4031B431:
+call    sub_402F5A
+call    sub_402F30
+mov     esi, Sleep
+mov     edi, InternetGetConnectedState" }
+node: { title: "5" label: "58loc_4031CA31:
+push    32h             ; dwMilliseconds
+call    esi ; Sleep
+xor     ebx, ebx
+lea     eax, [ebp+var_8]
+push    ebx
+push    eax
+mov     [ebp+var_8], ebx
+call    edi ; InternetGetConnectedState
+cmp     eax, ebx
+mov     [ebp+var_4], eax
+jz      short loc_4031CA" }
+node: { title: "6" label: "76004031E131:
+cmp     dword_414B68, ebx
+jle     short loc_4031CA" }
+node: { title: "7" label: "76004031E931:
+mov     [ebp+Str], offset hFile" }
+node: { title: "8" label: "58loc_4031F031:
+cmp     [ebp+var_4], 1
+jnz     short loc_4031CA" }
+node: { title: "9" label: "76004031F631:
+cmp     byte_408260[ebx], 0
+jnz     short loc_403215" }
+node: { title: "10" label: "76004031FF31:
+mov     eax, [ebp+Str]
+push    dword ptr [eax] ; hFile
+call    sub_401D65
+test    eax, eax
+pop     ecx
+jz      short loc_403215" }
+node: { title: "11" label: "760040320E31:
+mov     byte_408260[ebx], 1" }
+node: { title: "12" label: "58loc_40321531:
+lea     eax, [ebp+var_8]
+push    0
+push    eax
+call    edi ; InternetGetConnectedState
+push    32h             ; dwMilliseconds
+mov     [ebp+var_4], eax
+call    esi ; Sleep
+add     [ebp+Str], 4
+inc     ebx
+cmp     ebx, dword_414B68
+jl      short loc_4031F0" }
+node: { title: "13" label: "760040323131:
+jmp     short loc_4031CA" }
+// node 0
+edge: { sourcename: "0" targetname: "1" label: "false" color: red }
+edge: { sourcename: "0" targetname: "2" label: "true" color: darkgreen }
+// node 1
+// node 2
+edge: { sourcename: "2" targetname: "3" label: "false" color: red }
+edge: { sourcename: "2" targetname: "4" label: "true" color: darkgreen }
+// node 3
+edge: { sourcename: "3" targetname: "4" }
+// node 4
+edge: { sourcename: "4" targetname: "5" }
+// node 5
+edge: { sourcename: "5" targetname: "6" label: "false" color: red }
+edge: { sourcename: "5" targetname: "5" label: "true" color: darkgreen }
+// node 6
+edge: { sourcename: "6" targetname: "5" label: "true" color: darkgreen }
+edge: { sourcename: "6" targetname: "7" label: "false" color: red }
+// node 7
+edge: { sourcename: "7" targetname: "8" }
+// node 8
+edge: { sourcename: "8" targetname: "5" label: "true" color: darkgreen }
+edge: { sourcename: "8" targetname: "9" label: "false" color: red }
+// node 9
+edge: { sourcename: "9" targetname: "10" label: "false" color: red }
+edge: { sourcename: "9" targetname: "12" label: "true" color: darkgreen }
+// node 10
+edge: { sourcename: "10" targetname: "11" label: "false" color: red }
+edge: { sourcename: "10" targetname: "12" label: "true" color: darkgreen }
+// node 11
+edge: { sourcename: "11" targetname: "12" }
+// node 12
+edge: { sourcename: "12" targetname: "8" label: "true" color: darkgreen }
+edge: { sourcename: "12" targetname: "13" label: "false" color: red }
+// node 13
+edge: { sourcename: "13" targetname: "5" }
+}

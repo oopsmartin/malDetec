@@ -1,0 +1,414 @@
+graph: {
+title: "Call flow of unpacked.exe"
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 192 192
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 0 0
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+node: { title: "0" label: "sub_401000" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "1" label: "sub_40104E" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "2" label: "sub_4010A4" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "3" label: "sub_401265" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "4" label: "sub_4012AC" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "5" label: "sub_401332" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "6" label: "sub_401569" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "7" label: "sub_4015EF" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "8" label: "sub_40170B" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "9" label: "sub_401946" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "10" label: "sub_4019CB" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "11" label: "sub_401A52" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "12" label: "sub_401AC5" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "13" label: "sub_401C10" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "14" label: "sub_401CB7" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "15" label: "sub_401CD5" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "16" label: "sub_401CDF" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "17" label: "sub_401D19" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "18" label: "sub_401D51" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "19" label: "sub_401D65" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "20" label: "sub_40283D" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "21" label: "sub_402872" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "22" label: "sub_402898" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "23" label: "sub_402905" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "24" label: "sub_4029A9" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "25" label: "sub_402B25" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "26" label: "sub_402B56" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "27" label: "sub_402D48" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "28" label: "sub_402DDA" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "29" label: "sub_402F30" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "30" label: "sub_402F5A" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "31" label: "_WinMain@16" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "32" label: "j_GetNetworkParams" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "33" label: "_memset" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "34" label: "??2@YAPAXI@Z" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "35" label: "_memcpy" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "36" label: "_strcpy" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "37" label: "_strcat" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "38" label: "_strlen" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "39" label: "_strncpy" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "40" label: "??3@YAXPAX@Z" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "41" label: "__alloca_probe" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "42" label: "_isdigit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "43" label: "_isalnum" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "44" label: "_strstr" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "45" label: "_strchr" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "46" label: "_strcmp" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "47" label: "start" color: green bordercolor: black }
+node: { title: "48" label: "__amsg_exit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "49" label: "_fast_error_exit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "50" label: "_malloc" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "51" label: "__nh_malloc" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "52" label: "__heap_alloc" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "53" label: "_free" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "54" label: "__isctype" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "55" label: "__cinit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "56" label: "_exit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "57" label: "__exit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "58" label: "_doexit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "59" label: "__initterm" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "60" label: "__XcptFilter" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "61" label: "_xcptlookup" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "62" label: "__wincmdln" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "63" label: "__setenvp" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "64" label: "__setargv" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "65" label: "_parse_cmdline" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "66" label: "___crtGetEnvironmentStringsA" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "67" label: "__ioinit" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "68" label: "__heap_init" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "69" label: "__global_unwind2" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "70" label: "__unwind_handler" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "71" label: "__local_unwind2" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "72" label: "__abnormal_termination" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "73" label: "__NLG_Notify" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "74" label: "unknown_libname_1
+34; Microsoft VisualC 2-9/net runtime" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "75" label: "__FF_MSGBANNER" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "76" label: "__NMSG_WRITE" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "77" label: "__callnewh" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "78" label: "___sbh_heap_init" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "79" label: "___sbh_find_block" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "80" label: "___sbh_free_block" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "81" label: "___sbh_alloc_block" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "82" label: "___sbh_alloc_new_region" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "83" label: "___sbh_alloc_new_group" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "84" label: "___crtGetStringTypeA" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "85" label: "__ismbblead" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "86" label: "_x_ismbbtype" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "87" label: "__setmbcp" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "88" label: "_getSystemCP" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "89" label: "_CPtoLCID" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "90" label: "_setSBCS" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "91" label: "_setSBUpLow" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "92" label: "___initmbctable" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "93" label: "___crtMessageBoxA" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "94" label: "_memcpy_0" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "95" label: "___crtLCMapStringA" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "96" label: "_strncnt" color: 75 textcolor: 73 bordercolor: black }
+node: { title: "97" label: "j_RtlUnwind" color: 76 textcolor: 73 bordercolor: black }
+node: { title: "98" label: "__strlwr" color: 75 textcolor: 73 bordercolor: black }
+// node 0
+// node 1
+// node 2
+edge: { sourcename: "2" targetname: "0" }
+edge: { sourcename: "2" targetname: "33" }
+// node 3
+edge: { sourcename: "3" targetname: "33" }
+edge: { sourcename: "3" targetname: "34" }
+// node 4
+edge: { sourcename: "4" targetname: "35" }
+// node 5
+edge: { sourcename: "5" targetname: "1" }
+edge: { sourcename: "5" targetname: "3" }
+edge: { sourcename: "5" targetname: "4" }
+edge: { sourcename: "5" targetname: "36" }
+edge: { sourcename: "5" targetname: "38" }
+// node 6
+edge: { sourcename: "6" targetname: "2" }
+edge: { sourcename: "6" targetname: "5" }
+edge: { sourcename: "6" targetname: "38" }
+// node 7
+// node 8
+edge: { sourcename: "8" targetname: "9" }
+edge: { sourcename: "8" targetname: "10" }
+edge: { sourcename: "8" targetname: "33" }
+// node 9
+// node 10
+edge: { sourcename: "10" targetname: "7" }
+// node 11
+// node 12
+// node 13
+edge: { sourcename: "13" targetname: "11" }
+// node 14
+// node 15
+// node 16
+edge: { sourcename: "16" targetname: "14" }
+// node 17
+edge: { sourcename: "17" targetname: "14" }
+edge: { sourcename: "17" targetname: "38" }
+// node 18
+// node 19
+edge: { sourcename: "19" targetname: "6" }
+edge: { sourcename: "19" targetname: "8" }
+edge: { sourcename: "19" targetname: "12" }
+edge: { sourcename: "19" targetname: "13" }
+edge: { sourcename: "19" targetname: "14" }
+edge: { sourcename: "19" targetname: "16" }
+edge: { sourcename: "19" targetname: "17" }
+edge: { sourcename: "19" targetname: "18" }
+edge: { sourcename: "19" targetname: "20" }
+edge: { sourcename: "19" targetname: "32" }
+edge: { sourcename: "19" targetname: "33" }
+edge: { sourcename: "19" targetname: "35" }
+edge: { sourcename: "19" targetname: "36" }
+edge: { sourcename: "19" targetname: "37" }
+edge: { sourcename: "19" targetname: "38" }
+edge: { sourcename: "19" targetname: "39" }
+edge: { sourcename: "19" targetname: "40" }
+edge: { sourcename: "19" targetname: "41" }
+// node 20
+edge: { sourcename: "20" targetname: "43" }
+// node 21
+// node 22
+edge: { sourcename: "22" targetname: "36" }
+edge: { sourcename: "22" targetname: "41" }
+// node 23
+edge: { sourcename: "23" targetname: "19" }
+edge: { sourcename: "23" targetname: "34" }
+edge: { sourcename: "23" targetname: "36" }
+edge: { sourcename: "23" targetname: "38" }
+edge: { sourcename: "23" targetname: "44" }
+// node 24
+edge: { sourcename: "24" targetname: "23" }
+edge: { sourcename: "24" targetname: "38" }
+edge: { sourcename: "24" targetname: "39" }
+edge: { sourcename: "24" targetname: "42" }
+edge: { sourcename: "24" targetname: "45" }
+// node 25
+edge: { sourcename: "25" targetname: "38" }
+// node 26
+edge: { sourcename: "26" targetname: "21" }
+edge: { sourcename: "26" targetname: "22" }
+edge: { sourcename: "26" targetname: "24" }
+edge: { sourcename: "26" targetname: "25" }
+edge: { sourcename: "26" targetname: "36" }
+edge: { sourcename: "26" targetname: "41" }
+edge: { sourcename: "26" targetname: "44" }
+edge: { sourcename: "26" targetname: "46" }
+edge: { sourcename: "26" targetname: "98" }
+// node 27
+edge: { sourcename: "27" targetname: "36" }
+edge: { sourcename: "27" targetname: "37" }
+edge: { sourcename: "27" targetname: "38" }
+// node 28
+edge: { sourcename: "28" targetname: "26" }
+edge: { sourcename: "28" targetname: "27" }
+edge: { sourcename: "28" targetname: "28" }
+edge: { sourcename: "28" targetname: "36" }
+edge: { sourcename: "28" targetname: "37" }
+edge: { sourcename: "28" targetname: "44" }
+edge: { sourcename: "28" targetname: "98" }
+// node 29
+edge: { sourcename: "29" targetname: "28" }
+// node 30
+edge: { sourcename: "30" targetname: "37" }
+edge: { sourcename: "30" targetname: "38" }
+// node 31
+edge: { sourcename: "31" targetname: "15" }
+edge: { sourcename: "31" targetname: "19" }
+edge: { sourcename: "31" targetname: "29" }
+edge: { sourcename: "31" targetname: "30" }
+edge: { sourcename: "31" targetname: "38" }
+// node 32
+// node 33
+// node 34
+edge: { sourcename: "34" targetname: "51" }
+// node 35
+// node 36
+// node 37
+// node 38
+// node 39
+// node 40
+edge: { sourcename: "40" targetname: "53" }
+// node 41
+// node 42
+edge: { sourcename: "42" targetname: "54" }
+// node 43
+edge: { sourcename: "43" targetname: "54" }
+// node 44
+// node 45
+// node 46
+// node 47
+edge: { sourcename: "47" targetname: "31" }
+edge: { sourcename: "47" targetname: "49" }
+edge: { sourcename: "47" targetname: "55" }
+edge: { sourcename: "47" targetname: "56" }
+edge: { sourcename: "47" targetname: "62" }
+edge: { sourcename: "47" targetname: "63" }
+edge: { sourcename: "47" targetname: "64" }
+edge: { sourcename: "47" targetname: "66" }
+edge: { sourcename: "47" targetname: "67" }
+edge: { sourcename: "47" targetname: "68" }
+// node 48
+edge: { sourcename: "48" targetname: "57" }
+edge: { sourcename: "48" targetname: "75" }
+edge: { sourcename: "48" targetname: "76" }
+// node 49
+edge: { sourcename: "49" targetname: "75" }
+edge: { sourcename: "49" targetname: "76" }
+// node 50
+edge: { sourcename: "50" targetname: "51" }
+// node 51
+edge: { sourcename: "51" targetname: "52" }
+edge: { sourcename: "51" targetname: "77" }
+// node 52
+edge: { sourcename: "52" targetname: "81" }
+// node 53
+edge: { sourcename: "53" targetname: "79" }
+edge: { sourcename: "53" targetname: "80" }
+// node 54
+edge: { sourcename: "54" targetname: "84" }
+// node 55
+edge: { sourcename: "55" targetname: "59" }
+// node 56
+edge: { sourcename: "56" targetname: "58" }
+// node 57
+edge: { sourcename: "57" targetname: "58" }
+// node 58
+edge: { sourcename: "58" targetname: "59" }
+// node 59
+// node 60
+edge: { sourcename: "60" targetname: "61" }
+// node 61
+// node 62
+edge: { sourcename: "62" targetname: "85" }
+edge: { sourcename: "62" targetname: "92" }
+// node 63
+edge: { sourcename: "63" targetname: "36" }
+edge: { sourcename: "63" targetname: "38" }
+edge: { sourcename: "63" targetname: "48" }
+edge: { sourcename: "63" targetname: "50" }
+edge: { sourcename: "63" targetname: "53" }
+edge: { sourcename: "63" targetname: "92" }
+// node 64
+edge: { sourcename: "64" targetname: "48" }
+edge: { sourcename: "64" targetname: "50" }
+edge: { sourcename: "64" targetname: "65" }
+edge: { sourcename: "64" targetname: "92" }
+// node 65
+// node 66
+edge: { sourcename: "66" targetname: "35" }
+edge: { sourcename: "66" targetname: "50" }
+edge: { sourcename: "66" targetname: "53" }
+// node 67
+edge: { sourcename: "67" targetname: "48" }
+edge: { sourcename: "67" targetname: "50" }
+// node 68
+edge: { sourcename: "68" targetname: "78" }
+// node 69
+edge: { sourcename: "69" targetname: "97" }
+// node 70
+// node 71
+edge: { sourcename: "71" targetname: "73" }
+// node 72
+// node 73
+// node 74
+edge: { sourcename: "74" targetname: "69" }
+edge: { sourcename: "74" targetname: "71" }
+edge: { sourcename: "74" targetname: "73" }
+// node 75
+edge: { sourcename: "75" targetname: "76" }
+// node 76
+edge: { sourcename: "76" targetname: "36" }
+edge: { sourcename: "76" targetname: "37" }
+edge: { sourcename: "76" targetname: "38" }
+edge: { sourcename: "76" targetname: "39" }
+edge: { sourcename: "76" targetname: "93" }
+// node 77
+// node 78
+// node 79
+// node 80
+edge: { sourcename: "80" targetname: "94" }
+// node 81
+edge: { sourcename: "81" targetname: "82" }
+edge: { sourcename: "81" targetname: "83" }
+// node 82
+// node 83
+// node 84
+edge: { sourcename: "84" targetname: "33" }
+edge: { sourcename: "84" targetname: "41" }
+// node 85
+edge: { sourcename: "85" targetname: "86" }
+// node 86
+// node 87
+edge: { sourcename: "87" targetname: "88" }
+edge: { sourcename: "87" targetname: "89" }
+edge: { sourcename: "87" targetname: "90" }
+edge: { sourcename: "87" targetname: "91" }
+// node 88
+// node 89
+// node 90
+// node 91
+edge: { sourcename: "91" targetname: "84" }
+edge: { sourcename: "91" targetname: "95" }
+// node 92
+edge: { sourcename: "92" targetname: "87" }
+// node 93
+// node 94
+// node 95
+edge: { sourcename: "95" targetname: "41" }
+edge: { sourcename: "95" targetname: "96" }
+// node 96
+// node 97
+// node 98
+edge: { sourcename: "98" targetname: "36" }
+edge: { sourcename: "98" targetname: "50" }
+edge: { sourcename: "98" targetname: "53" }
+edge: { sourcename: "98" targetname: "95" }
+}

