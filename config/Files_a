@@ -32,6 +32,6 @@ filename29=D:\workspace\MalDetect\util\..\graph\flowGraph\netsky-a\sub_402F30.gd
 filename30=D:\workspace\MalDetect\util\..\graph\flowGraph\netsky-a\sub_402F5A.gdl
 filename31=D:\workspace\MalDetect\util\..\graph\flowGraph\netsky-a\winmain.gdl
 [type]
-graphtype=function_call_graph
+graphtype=flow_graph
 [count]
 fileCount=32

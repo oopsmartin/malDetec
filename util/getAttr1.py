@@ -309,17 +309,21 @@ class MyUtils(object):
         sysCallNames = self.getCalls(filename, "syscall")
         print "sysCallNames are"
         print sysCallNames
-        #filename = "_"+filename[filename.rfind('-')+1:]
-        #filename = filename.replace('\\','_')
+        filename = "_"+filename[filename.rfind('-')+1:]
+        filename = filename.replace('\\','_')
        
         for eachKey in sysCallNames.keys():
             for systemCall in sysCallNames.get(eachKey):
                 print systemCall
                 print filename
+                models.Edge.createTable(filename, "function_call_graph")
+                
                 callInfo = models.SystemCall.searchData(sysCallFile, systemCall)
-                print callInfo[0]                
-                fc_edge = models.Edge(eachKey, callInfo[0][0], callInfo[0][1])
-                fc_edge.addData(filename, "syscall") 
+                if callInfo.__len__() > 0 :
+                    
+                    print callInfo
+                    fc_edge = models.Edge(eachKey, callInfo[0][0], callInfo[0][1])
+                    fc_edge.addData(filename, "syscall")
                 
         
     
@@ -462,11 +466,12 @@ class MyUtils(object):
         edgeType = [0 for i in range(0,200)]
         edgeNum = 0
         
-        conf = self.getFile(filename)
-        variantOffset = filename[filename.rfind('_'):]
+        conf = self.getFile(filename)        
         
         attrFile = conf.get("file", "filename"+str(count))
         attrType = conf.get("type", "graphtype")
+        
+        variantOffset = "_"+attrFile[attrFile.rfind('-')+1:attrFile.rfind('-')+2]+"_"
         
         #f = open(os.getcwd()+attrFile[1:-1],'rb')
         f = open(attrFile,'rb')
@@ -474,7 +479,9 @@ class MyUtils(object):
         #filename = attrFile.replace('\\..\\graph\\','').replace('.gdl','')
         
         attrFile = attrFile[attrFile.rfind('\\')+1:].replace('.gdl','')
-        attrFile += variantOffset
+        attrFile = variantOffset+attrFile
+        #attrFile = "_"+variantOffset+"_"+attrFile
+        
         
         print "attrFile in 1 is %s" % attrFile
         print "attrType in 1 is %s" % attrType
@@ -493,13 +500,14 @@ class MyUtils(object):
                 IDend = eachLine.find('color:')
                 numS = eachLine.find('title:')
                 #-1 consider there is a block
-                ID = eachLine[numS+'title:'.__len__():IDstart].lstrip().rstrip()       
+                ID = eachLine[numS+'title:'.__len__():IDstart].lstrip().rstrip()
+                print "ID is " + ID       
                 #content represents vertexName
                 content = eachLine[IDstart+'label:'.__len__():IDend].lstrip().rstrip()
                 #save the temporary diction of vertexID and vertexName
                 dictTMP = {ID:str(content)}
                 #append to the whole dict
-                dict.update(dictTMP)    
+                dict.update(dictTMP)
             #get the edge information
             if 'edge:' in eachLine:
                 #get the edge information
@@ -537,21 +545,27 @@ class MyUtils(object):
                 i += 1                
                 edgeNum += 1
         
-        vertexNum = dict.__len__()
+        
+        print "dict length is %d" %dict.__len__()
         # get each vertex and edge assigned    
-        for i in range(0,vertexNum):
-            name = dict.get('"'+str(i)+'"')
+        for i in dict.iterkeys():
+            print i
+            cursor = int(i[1:-1])
+            print "cursor is %d" % cursor
+            label = dict.get(i)
             mytype = 'notype'
-            indegree = Inde[i]
-            outdegree = Outde[i]
-            vertex = models.Vertex(mytype,name,indegree,outdegree)     
+            indegree = Inde[cursor]
+            outdegree = Outde[cursor]
+            vertex = models.Vertex(cursor, label, mytype, indegree, outdegree)     
             vertex.addData(attrFile,attrType)
+            print "vertex added"
             
         for i in range(0,edgeNum):
             edge = models.Edge(sourceVertex[i],targetVertex[i],edgeType[i])
             edge.addData(attrFile,attrType)
+            print "edge added"
     
-    
+    '''
     # initialize fc edge
     
     def edge_fc_Init(self, filename, count):
@@ -586,6 +600,8 @@ class MyUtils(object):
             edge = models.Edge(sourceVertex[i],targetVertex[i])
             edge.addData(attrFile,attrType)
             
+    '''
+    
     
     def getMaxSimilar(self, matrixA, matrixB):
         

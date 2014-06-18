@@ -34,6 +34,9 @@ instructionMapFile = configDir+"object_operationMap"
 subGraphDir = os.getcwd()+r"\..\graph\flowGraph\netsky-a\\"
 subGraphDir = subGraphDir[:-1]
 
+
+'''
+
 # 1. Get all system calls from the whole program
 allSysCalls = utils.getAllSysCalls(configFile)
 print "allsys length is %d" % allSysCalls.__len__()
@@ -70,11 +73,16 @@ print operationMap
 print "objectMap are as below"
 print objectMap
 
+
+'''
 # 2. Get all subroutine's system calls
 allFiles = utils.traverseDir(subGraphDir)
 
 # write all flow graph files into /config directory
-utils.writeAllFiles(subGraphDir, "a", "function_call_graph")
+utils.writeAllFiles(subGraphDir, "a", "flow_graph")
+
+
+'''
 
 print "2500"
 count = int(utils.getFile(flowGraphFile).get("count", "fileCount"))
@@ -84,6 +92,8 @@ for cursor in range(0,count):
                             utils.getFile(flowGraphFile).get("file", "filename"+str(cursor)))
 
 print "2501"
+
+'''
 
 fileCount = allFiles.__len__()
 # each element of the list stores a subroutine's system calls 
@@ -97,14 +107,15 @@ for eachFile in allFiles:
     i += 1
 
 
-'''
+
 print "before init"
 for cursor in range(0, fileCount):
     print flowGraphFile
-    utils.edge_fc_Init(flowGraphFile, cursor)
+    utils.edge_vertexInit(flowGraphFile, cursor)
 print "after init"
 
 
+'''
 paths = extractPaths.graphPath()
 fileDir = configDir+"Files_a"
 print "fileDir is %s" % fileDir

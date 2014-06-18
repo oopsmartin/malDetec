@@ -31,35 +31,38 @@ def createDB():
 class Vertex(object):
     '''
     ID identifies a vertex
+    title implies the vertex number in the gdl files
+    label implies the vertex name in the gdl files
     vertextype classifies a vertex by range
     into 'subroutine'(within an exclusive sub) and 'program'(within whole program)
-    name implies the vertex name
+    
     
     '''
-    def __init__(self, vertextype, name, indegree, outdegree):
+    def __init__(self, title, label, vertextype, indegree, outdegree):
         
+        self.title = title        
+        self.label = label
         self.vertextype = vertextype
-        self.name = name
         self.indegree = indegree
         self.outdegree = outdegree
     
     def addData(self, filename, fileType):
         
-        filename = "_"+filename[filename.rfind("\\")+1:]
+        #filename = "_"+filename[filename.rfind("\\")+1:]
         try:
             conn=MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph', port=3306)
             #conn.select_db('callgraph')
             cur=conn.cursor()
             #function call graph
             if "function_call_graph" in fileType:          
-                cur.execute("insert into vertex%s(vertextype,name,indegree,outdegree) \
-                        values('%s','%s',%d,%d);" 
-                % (str(filename+"_fc"), self.vertextype, self.name, self.indegree, self.outdegree))
+                cur.execute("insert into vertex%s(title, label, vertextype, indegree, outdegree) \
+                        values(%d, '%s', '%s', %d, %d);" 
+                % (str(filename+"_fc"), self.title, self.label, self.vertextype, self.indegree, self.outdegree))
             #flow graph
             elif "flow_graph" in fileType:
-                cur.execute("insert into vertex%s(vertextype,name,indegree,outdegree) \
-                        values('%s','%s',%d,%d);" 
-                % (str(filename+"_fg"), self.vertextype, self.name, self.indegree, self.outdegree))
+                cur.execute("insert into vertex%s(title, label, vertextype, indegree, outdegree) \
+                        values(%d, '%s', '%s', %d, %d);" 
+                % (str(filename+"_fg"), self.title, self.label, self.vertextype, self.indegree, self.outdegree))
             #add a line in FlowGraphVertex
             conn.commit()
             cur.close()
@@ -71,7 +74,7 @@ class Vertex(object):
     @staticmethod        
     def createTable(filename, fileType):
         
-        filename = "_"+filename[filename.rfind('\\')+1:]
+        #filename = filename[filename.rfind('\\')+1:]
         try:
             print "Here is %s" % str(filename+"_fc")   
             conn = MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph',port=3306)
@@ -80,15 +83,17 @@ class Vertex(object):
             '''
             #funcion call graph
             if "function_call_graph" in fileType:
-                cur.execute("create table if not exists vertex%s (ID INTEGER NOT NULL auto_increment, vertextype VARCHAR(20),\
-                         name VARCHAR(50), indegree INTEGER, outdegree INTEGER, unique(indegree, outdegree), PRIMARY KEY(ID));" 
+                cur.execute("create table if not exists vertex%s (ID INTEGER NOT NULL auto_increment, title INTEGER NOT NULL,\
+                        label VARCHAR(50), vertextype VARCHAR(20), indegree INTEGER, outdegree INTEGER, \
+                        PRIMARY KEY(ID));" 
                          % str(filename+"_fc"))
             '''
             
             #flow graph
             if "flow_graph" in fileType:
-                cur.execute("create table if not exists vertex%s (ID INTEGER NOT NULL auto_increment, vertextype VARCHAR(20),\
-                         name VARCHAR(50), indegree INTEGER, outdegree INTEGER, unique(indegree, outdegree), PRIMARY KEY(ID));" 
+                cur.execute("create table if not exists vertex%s (ID INTEGER NOT NULL auto_increment, title INTEGER NOT NULL,\
+                        label VARCHAR(50), vertextype VARCHAR(20), indegree INTEGER, outdegree INTEGER, \
+                        PRIMARY KEY(ID));" 
                          % str(filename+"_fg"))
 
             conn.commit()
@@ -96,6 +101,7 @@ class Vertex(object):
             conn.close()
         except MySQLdb.Error,e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+            sys.exit()
  
 # edge implies each edge's info
 # seperated by flowgraph and function-callgraph           
@@ -120,7 +126,7 @@ class Edge(object):
     
     def addData(self, filename, fileType):
         
-        filename = "_"+filename[filename.rfind("\\")+1:]
+        #filename = filename.replace('.gdl','')
         try:
             conn=MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph', port=3306)
             cur=conn.cursor()
@@ -139,11 +145,12 @@ class Edge(object):
             
         except MySQLdb.Error,e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+            sys.exit()
     
     @staticmethod            
     def createTable(filename,fileType):
         
-        filename = "_"+filename[filename.rfind('\\')+1:]
+        #filename = filename.replace('.gdl','')
         print "filename in create edge is %s" % filename
         print "fileType is %s" % fileType
         try:
@@ -175,7 +182,7 @@ class Edge(object):
     @staticmethod
     def getAll(filename, fileType):
         
-        filename =  "_"+filename[filename.rfind('\\')+1:]
+        #filename =  "_"+filename[filename.rfind('\\')+1:]
         print "filename in getall is %s" % filename
         try:
             conn = MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph', port=3306)
