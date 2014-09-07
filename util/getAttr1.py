@@ -317,16 +317,15 @@ class MyUtils(object):
                 print systemCall
                 print filename
                 models.Edge.createTable(filename, "function_call_graph")
-                
+                print "already"
                 callInfo = models.SystemCall.searchData(sysCallFile, systemCall)
                 if callInfo.__len__() > 0 :
                     
-                    print callInfo
-                    fc_edge = models.Edge(eachKey, callInfo[0][0], callInfo[0][1])
-                    fc_edge.addData(filename, "syscall")
-                
+                    print callInfo                    
+                    fc_edge = models.Edge(int(eachKey), int(callInfo[0][0]), int(callInfo[0][1]))
+                    fc_edge.addData(filename, "function_call_graph")
+                    print "ok"
         
-    
     # get the call sequence of the file named filename
     def callSequence(self, filename, fileType, callType):
         order = []
@@ -447,6 +446,7 @@ class MyUtils(object):
         
         
     # initialize fg edge and fg vertex
+    
     def edge_vertexInit(self, filename, count):
         
         # Inde/Outde represents the list of all InDegrees/OutDegrees
@@ -565,44 +565,6 @@ class MyUtils(object):
             edge.addData(attrFile,attrType)
             print "edge added"
     
-    '''
-    # initialize fc edge
-    
-    def edge_fc_Init(self, filename, count):
-        
-        edgeNum = 0
-        
-        
-        conf = self.getFile(filename)
-        variantOffset = filename[filename.rfind('_'):]
-        
-        attrFile = conf.get("file", "filename"+str(count))
-        attrType = conf.get("type", "graphtype")
-        
-        #f = open(os.getcwd()+attrFile[1:-1],'rb')
-        f = open(attrFile,'rb')
-        
-        #filename = attrFile.replace('\\..\\graph\\','').replace('.gdl','')
-        
-        attrFile = attrFile[attrFile.rfind('\\')+1:].replace('.gdl','')
-        attrFile += variantOffset
-        
-        print "attrFile in 2 is %s" % attrFile
-        print "attrType in 2 is %s" % attrType
-        #print "3144 filename is %s" % filename
-        models.Edge.createTable(attrFile, attrType)
-        
-        allLines = f.readlines()
-        i = 0
-       
-                
-        for i in range(0,edgeNum):
-            edge = models.Edge(sourceVertex[i],targetVertex[i])
-            edge.addData(attrFile,attrType)
-            
-    '''
-    
-    
     def getMaxSimilar(self, matrixA, matrixB):
         
         matrix = [[0 for j in range(0,128)] for i in range(0,128)]
@@ -617,6 +579,36 @@ class MyUtils(object):
                         cursor += 1
                 
         return matrix
+    
+    # generate system call matrix
+    
+    def generateSyscallMatrix(self, filename):
+        
+        filename = "_"+filename[filename.find('-')+1:]
+        filename = filename.replace('\\','_').replace('.gdl','')
+        print "filename now is %s" % filename
+        '''
+        PartialOrder = [[0 for i in range(128)]for j in range(128)]
+        i = 0
+        while(i<32):
+            while(j<4):
+                pass
+        '''
+        SourceMap = {}
+        TargetMap = {}
+        
+        edge_fg = models.Edge.getAll(filename, "flow_graph")
+        edge_fc = models.Edge.getAll(filename, "function_call_graph")
+        
+        for each_fg in edge_fg:
+            for each_fc in edge_fc:
+                if each_fg[0]==each_fc[0]:
+                    SourceMap[each_fg[0]] = [each_fc[1],each_fc[2]]
+        
+        print edge_fg
+            
+    
+    
     ''' 
     configDir = os.getcwd()+r"\..\config\\"
     configFile = configDir+"conf.cfg"

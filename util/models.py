@@ -126,12 +126,13 @@ class Edge(object):
     
     def addData(self, filename, fileType):
         
-        #filename = filename.replace('.gdl','')
+        filename = filename.replace('.gdl','')
         try:
             conn=MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph', port=3306)
             cur=conn.cursor()
             #function call graph
             if "function_call_graph" in fileType:
+                print "insert in function_call_graph"
                 cur.execute('insert into edge%s(blockID, objID, optID) values(%d, %d, %d);' 
                         % (str(filename+"_fc"), self.fromID, self.toID, self.type))
             #flow graph
@@ -145,12 +146,12 @@ class Edge(object):
             
         except MySQLdb.Error,e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
-            sys.exit()
+            
     
     @staticmethod            
     def createTable(filename,fileType):
         
-        #filename = filename.replace('.gdl','')
+        filename = filename.replace('.gdl','')
         print "filename in create edge is %s" % filename
         print "fileType is %s" % fileType
         try:
@@ -158,9 +159,9 @@ class Edge(object):
             conn = MySQLdb.connect(host='127.0.0.1',user='root',passwd='8086W028C',db='callgraph',port=3306)
             cur = conn.cursor()
             #FunCallEdge
-            if "function_call_graph" in fileType:
+            if "function_call_graph" in fileType:                
                 cur.execute("create table if not exists edge%s \
-                        (blockID INTEGER NOT NULL REFERENCES vertex%s(ID), \
+                        (blockID INTEGER NOT NULL REFERENCES vertex%s(title), \
                         objID INTEGER NOT NULL, \
                         optID INTEGER NOT NULL, \
                         PRIMARY KEY(blockID, objID, optID));" 
@@ -168,8 +169,8 @@ class Edge(object):
             #FlowGraphEdge
             elif "flow_graph" in fileType:
                 cur.execute("create table if not exists edge%s \
-                        (Source INTEGER NOT NULL REFERENCES vertex%s(ID), \
-                        Target INTEGER NOT NULL REFERENCES vertex%s(ID), \
+                        (Source INTEGER NOT NULL REFERENCES vertex%s(title), \
+                        Target INTEGER NOT NULL REFERENCES vertex%s(title), \
                         switchType INTEGER, PRIMARY KEY(Source,Target));" 
                         % (str(filename+"_fg"), str(filename+"_fg"), str(filename+"_fg")))
             conn.commit()
@@ -178,6 +179,7 @@ class Edge(object):
             
         except MySQLdb.Error,e:
             print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+            sys.exit()
     
     @staticmethod
     def getAll(filename, fileType):
@@ -202,6 +204,8 @@ class Edge(object):
             conn.commit()
             cur.close()
             conn.close()
+            
+            print results.__class__
             
             return results
             

@@ -35,7 +35,7 @@ subGraphDir = os.getcwd()+r"\..\graph\flowGraph\netsky-a\\"
 subGraphDir = subGraphDir[:-1]
 
 
-'''
+
 
 # 1. Get all system calls from the whole program
 allSysCalls = utils.getAllSysCalls(configFile)
@@ -46,7 +46,7 @@ print instructionFile
 utils.initMap(instructionFile, instructionMapFile)
 
 
-refinedData.Instruction.createTable(configFile)
+#refinedData.Instruction.createTable(configFile)
 
 
 utils.generateExtractedSysCall(instructionFile)
@@ -74,7 +74,7 @@ print "objectMap are as below"
 print objectMap
 
 
-'''
+
 # 2. Get all subroutine's system calls
 allFiles = utils.traverseDir(subGraphDir)
 
@@ -82,7 +82,7 @@ allFiles = utils.traverseDir(subGraphDir)
 utils.writeAllFiles(subGraphDir, "a", "flow_graph")
 
 
-'''
+
 
 print "2500"
 count = int(utils.getFile(flowGraphFile).get("count", "fileCount"))
@@ -111,11 +111,24 @@ for eachFile in allFiles:
 print "before init"
 for cursor in range(0, fileCount):
     print flowGraphFile
+    # initialize both vertex and edge tables of fg type
     utils.edge_vertexInit(flowGraphFile, cursor)
 print "after init"
+'''
+
 
 
 '''
+
+count = int(utils.getFile(flowGraphFile).get("count", "fileCount"))
+count -= 1
+filename = utils.getFile(flowGraphFile).get("file", "filename"+str(count))
+print filename
+utils.generateSyscallMatrix(filename)
+
+
+
+
 paths = extractPaths.graphPath()
 fileDir = configDir+"Files_a"
 print "fileDir is %s" % fileDir
